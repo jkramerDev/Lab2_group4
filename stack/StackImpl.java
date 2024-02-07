@@ -1,41 +1,48 @@
 package stack; 
 
 public class StackImpl implements Stack {
+	protected String[] stacks;
+	protected int top;
+	protected int size;
+	
+	public StackImpl(int size) {
+		stacks = new String[size];
+		top = -1;
+		this.size = size;
+	} 
 
 	@Override
 	public void push(String s) {
-	
 		System.out.println("thing i added to stack: " + s);
-	
+		top++;
+		stacks[top] = s;
 	}
 
 	@Override
 	public String pop() {
-		// TODO Auto-generated method stub
-		return null;
+		String person = stacks[top];
+		top--;
+		return person;
 	}
 
 	@Override
 	public Boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return null;
+		return top == -1;
 	}
 
 	@Override
 	public Boolean isFull() {
-		// TODO Auto-generated method stub
-		return null;
+		return top == size - 1;
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 
 	@Override
 	public String peek() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -47,9 +54,9 @@ public class StackImpl implements Stack {
 
 	@Override
 	public void display() {
-		// TODO Auto-generated method stub
-		
+		System.out.println();
+		for(int i = 0; i < stacks.length; i++) {
+			System.out.print(stacks[i] + " ");
+		}
 	}
- 
-
 }
