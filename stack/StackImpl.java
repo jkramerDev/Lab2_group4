@@ -13,7 +13,10 @@ public class StackImpl implements Stack {
 
 	@Override
 	public void push(String s) {
-		System.out.println("thing i added to stack: " + s);
+		if (isFull()) {
+			System.out.println("cannot push any more cuz stack is full");
+			return;
+		}
 		top++;
 		stacks[top] = s;
 	}
@@ -42,21 +45,23 @@ public class StackImpl implements Stack {
 
 	@Override
 	public String peek() {
-		
-		return null;
+		if (isEmpty()) {
+            return null; 
+        }
+        return stacks[top];
 	}
 
-	@Override
+	@Override 
 	public void setCapacity(int size) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void display() {
-		System.out.println();
-		for(int i = 0; i < stacks.length; i++) {
+		System.out.print("[ ");
+		for(int i = 0; i <= top; i++) {
 			System.out.print(stacks[i] + " ");
 		}
+		System.out.println("]");
 	}
 }
