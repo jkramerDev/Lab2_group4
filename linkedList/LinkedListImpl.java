@@ -7,7 +7,7 @@ public class LinkedListImpl implements LinkedList {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+jsjwusjdjsj
 	@Override
 	public Boolean addItem(String thisItem) {
 		
