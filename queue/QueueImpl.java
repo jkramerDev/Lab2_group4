@@ -1,41 +1,29 @@
 package queue;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class QueueImpl implements Queue {
-
-	@Override
-	public boolean isFull() {
-		// TODO Auto-generated method stub
-		return false;
+	private Queue<String> queue;
+	
+	public QueueImpl() {
+		queue = new LinkedList<>();
 	}
-
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+	public void enQueue(String item) {
+		queue.add(item);
 	}
-
-	@Override
-	public void enQueue(String element) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public String deQueue() {
-		// TODO Auto-generated method stub
-		return null;
+		if(isEmpty()) {
+			System.out.println("Queue is empty");
+		}
+		return queue.remove();
 	}
-
-	@Override
-	public void display() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public String peek() {
-		// TODO Auto-generated method stub
-		return null;
+		if(isEmpty()) {
+			System.out.println("Queue is empty");
+		}
+		return queue.peek();
 	}
-
+	public boolean isEmpty() {
+		return queue.isEmpty();
+	}
 }
