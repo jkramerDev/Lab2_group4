@@ -1,9 +1,7 @@
 package queue;
 
 public class QueueTester {
-
-	public static void main(String[] args) {
-		Queue <String> queue = new LinkedQueue<>();
+	QueueImpl queue = new QueueImpl();
 		//enqueue 6 riders
 		queue.enQueue("Bobby");
 		queue.enQueue("Scarlett");
@@ -12,26 +10,27 @@ public class QueueTester {
 		queue.enQueue("Joe");
 		queue.enQueue("Emily");
 		
-		// iterate over the queue and print all riders
-		System.out.println("All riders in the queue:");
-		while(!queue.isEmpty()) {
-			System.out.println(queue.dequeue());
-		}
+		//test display
+		System.out.println("People in the queue: ");
+		queue.display();	
+		
 		//add two more riders to the queue
 		queue.enQueue("Drake");
 		queue.enQueue("Vanessa");
 		
-		//peek at the queue
-		System.out.println("Peek at the queue: " + queue.peek());
+		//test peek
+		String frontOfQueue = queue.peek();
+		System.out.println("First person in queue: " + frontOfQueue);
 		
-		//remove the head and reprint
-		System.out.println("dequeue: " + queue.dequeue());
+		//test dequeue
+		String removedPerson = queue.deQueue();
+		System.out.println("Removed person: " + removedPerson);
 		
-		//iterate over the queue and print all riders
-		System.out.println("All riders in the queue after dequeue: ");
-		while(!queue.isEmpty()) {
-			System.out.println(queue.dequeue());
+		//display after dequeue
+		System.out.println("Queue after deQueue: ");
+			queue.display();
 		}
-	}
+}
+}
 
 }
