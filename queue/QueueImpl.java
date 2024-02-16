@@ -6,19 +6,13 @@ public class QueueImpl implements Queue {
 	String[] arr = new String[LENGTH];
 	int size = 0;
 
-	public boolean isFull() {
-		if (arr[LENGTH - 1] != null) {
-			return true;
-		}
-		return false;
+	ppublic boolean isFull() {
+		return (size == arr.length);
 	}
 
 	@Override
 	public boolean isEmpty() {
-		if (arr[0] == null) {
-			return true;
-		}
-		return false;
+		return (size == 0);
 	}
 
 	public void enQueue(String element) {
