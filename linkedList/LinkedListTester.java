@@ -3,7 +3,6 @@ package linkedList;
 public class LinkedListTester {
 
 	public static void main(String[] args) {
-		public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		LinkedList stations = new LinkedListImpl();
 		
@@ -48,6 +47,7 @@ public class LinkedListTester {
 		stations.listItems();
 		
 		//Add a station before another station
+		System.out.println("Adding station before another station...");
 		System.out.println("input station to add: ");
 		String userAdd = sc.nextLine();
 		System.out.println("input station to add before: ");
@@ -59,16 +59,20 @@ public class LinkedListTester {
 			System.out.println("station added to list.");
 		}
 		
-		
-		
 		//List the stations
-//		stations.listItems();
-//		
-//		//Add a station after another station
-//		stations.insertAfter("Taffic Circle", "ShoppingCenter");
-//		
-//		//Print the stations
-//		stations.listItems();
+		stations.listItems();
+		
+		//Add a station after another station
+		System.out.println("Adding station after another station...");
+		stations.insertAfter("Taffic Circle", "Shopping Center");
+		
+		//Print the stations
+		stations.listItems();
+		System.out.println();
+		stations.sort();
+		stations.listItems();
+		
+
 	}
 
 }
