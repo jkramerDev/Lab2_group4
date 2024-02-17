@@ -2,7 +2,6 @@ package linkedList;
 
 public class LinkedListImpl implements LinkedList {
 	private ListItem head;
-	
 	public LinkedListImpl() {
 		head = null;
 	}
@@ -80,7 +79,7 @@ public class LinkedListImpl implements LinkedList {
 	            head = curr.getNext();
 	            return true;
 			}
-			while(curr.getData().equals(thisItem) == false) {
+			while(curr != null && !curr.getData().equalsIgnoreCase(thisItem)) {
 				previous = curr;
 				curr = curr.getNext();
 			}
@@ -91,18 +90,57 @@ public class LinkedListImpl implements LinkedList {
 
 	@Override
 	public Boolean insertBefore(String newItem, String itemToInsertBefore) {
-		
-		return null;
+		 if (head == null) {
+		     return false;
+		 }
+		 // If the item to insert before is the head, update head
+		 if (head.getData().equalsIgnoreCase(itemToInsertBefore)) {
+	        ListItem newNode = new ListItem(newItem);
+	        newNode.setNext(head);
+	        head = newNode;
+	        return true;
+		 }
+
+		    // find the node before the item to insert before
+		    ListItem curr = head;
+		    ListItem prev = null;
+		    while (curr != null && !curr.getData().equalsIgnoreCase(itemToInsertBefore)) {
+		        prev = curr;
+		        curr = curr.getNext();
+		    }
+
+		    // If the item to insert before is not found
+		    if (curr == null)
+		        return false;
+
+		    // Insert the new item before the current node
+		    ListItem newNode = new ListItem(newItem);
+		    newNode.setNext(curr);
+		    prev.setNext(newNode);
+		    return true;
 	}
 
 	@Override
 	public Boolean insertAfter(String newItem, String itemToInsertAfter) {
-		// TODO Auto-generated method stub
-		return null;
+		ListItem curr = head;
+	    while (curr != null && !curr.getData().equalsIgnoreCase(itemToInsertAfter)) {
+	        curr = curr.getNext();
+	    }
+
+	    // item to insert after is not found
+	    if (curr == null) {
+	    	System.err.println("station not found");
+	    	return false;
+	    }else {
+		    ListItem newNode = new ListItem(newItem);
+		    newNode.setNext(curr.getNext());
+		    curr.setNext(newNode);
+		    return true;
+	   }
 	}
 
 	@Override
 	public void sort() {
-		
-	}	
+	}
+}
 }
