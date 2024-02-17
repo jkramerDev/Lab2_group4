@@ -4,7 +4,7 @@ public class StackTester {
 
 	public static void main(String[] args) {
 
-		Stack stack = new StackImpl(6);
+		Stack stack = new StackImpl();
 		
 		//create (push) 6 riders by name 
 		stack.push("Jeff");
