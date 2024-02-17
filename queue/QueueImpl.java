@@ -5,8 +5,9 @@ public class QueueImpl implements Queue {
 	int LENGTH = 5;
 	String[] arr = new String[LENGTH];
 	int size = 0;
-
-	ppublic boolean isFull() {
+	
+	@Override
+	public boolean isFull() {
 		return (size == arr.length);
 	}
 
