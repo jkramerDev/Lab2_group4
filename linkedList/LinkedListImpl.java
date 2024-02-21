@@ -2,6 +2,7 @@ package linkedList;
 
 public class LinkedListImpl implements LinkedList {
 	private ListItem head;
+	
 	public LinkedListImpl() {
 		head = null;
 	}
@@ -142,5 +143,4 @@ public class LinkedListImpl implements LinkedList {
 	@Override
 	public void sort() {
 	}
-}
 }
