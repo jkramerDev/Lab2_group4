@@ -8,13 +8,14 @@ package template;
  *   
  *   
  */
-	public class PhonebookEntry {
+class PhonebookEntry{
 	private String phoneNumber;
 	private String numberType;
  
 	public PhonebookEntry(String phoneNumber, String numberType) {
 		this.phoneNumber = phoneNumber;
 		this.numberType = numberType;
+		
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -28,4 +29,9 @@ package template;
 	public void setNumberType(String numberType) {
 		this.numberType = numberType;
 	}
+	
+	@Override
+   	public String toString() {
+        	return phoneNumber + " " + numberType;
+    	}
 }
