@@ -1,21 +1,17 @@
 package template;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class TestHarness {
-
 	// Contact overrides hashcode && equals.  Observe collision here.
 	private static Map<Contact, List<PhonebookEntry>> phonebook = new HashMap<>();
-	private static Contact p1, p2, p3, p4, p5;
-	private static PhonebookHandler phonebookHander;
+    	private static Contact p1, p2, p3, p4, p5;
+   	private static PhonebookHandler phonebookHandler;
 
 
 	public static void main(String[] args) throws InterruptedException {
 		init();
-		
 		//TODO: 2 cases:
 		//display non equality using your overriden equals method
 		//display equality using your overriden equals method
@@ -31,18 +27,19 @@ public class TestHarness {
 		TEST_hashcode(p2, p3);
 
 		//Create the phonebook handler
-		phonebookHander = new PhonebookHandler(phonebook);
+		phonebookHandler = new PhonebookHandler(phonebook);
 		
 		//TODO
 		//call 
-		List<Contact> sortedContacts = TEST_Sort(phonebookHander);
+		List<Contact> sortedContacts = TEST_Sort(phonebookHandler);
 		TEST_Display(sortedContacts);
 		
 		//TODO
 		// 2 cases:
 		// 1) a call to search finds the user and displays their entries 
 		//(2) a call to search does not find the user & displays some detail illustrating same
-		TEST_Search(phonebookHander, sortedContacts, "Juan");
+		TEST_Search(phonebookHandler, sortedContacts, "Juan");
+		TEST_Search(phonebookHandler, sortedContacts, "John");
 		 
 
 	}
@@ -50,49 +47,40 @@ public class TestHarness {
 	// 
 	public static List<Contact> TEST_Sort(PhonebookHandler phonebookHandler) {
 		//TODO: call your phonebookHander & have it sort the contacts.  Return those.
-		
-		List<Contact> sortedContacts = phonebookHander.sortByName();
+		System.out.println("Bubble Sort:");
+		List<Contact> sortedContacts = phonebookHandler.sortByName(phonebook);
 		return sortedContacts;
 	}
 
 	
 	public static void TEST_Search(PhonebookHandler phonebookHandler, List<Contact> sortedContacts, String name) {
 		//TODO: use the sorted contacts and a name to search for.  
-	  
-		
 		System.out.println("\n -- Search results for " + name + " -- ");
-		List<PhonebookEntry> selectedEntries = phonebookHander.binarySearch(sortedContacts, name);
+		List<PhonebookEntry> selectedEntries = phonebookHandler.binarySearch(sortedContacts, name);
 		for (PhonebookEntry entry : selectedEntries) {
-			
-			System.out.println("Entries for " + name + " " +  entry.getType() + " " + entry.getPhoneNumber());
+			System.out.println("Entries for " + name + " " +  entry.getNumberType() + " " + entry.getPhoneNumber());
 		}
 	}
 	
 	public static void TEST_Display(List<Contact> sortedContacts) {
-		phonebookHander.display(sortedContacts);
+		phonebookHandler.display(sortedContacts);
 	}
 
 	public static void TEST_Equals(Contact r1, Contact r2) {
-
 		System.out.println("Checking r1.equals(r2) for: \n" + r1.toString() + "\n" + r2.toString());
 		System.out.println(r1.equals(r2));
-
 		System.out.println();
 	}
 
 	public static void TEST_hashcode(Contact r1, Contact r2) {
-
 		System.out.println("Checking r1.hashcode = r2.hashcode for: \n" + r1.toString() + "\n" + r2.toString());
 		if (r1.hashCode() == r2.hashCode()) {
 			System.out.println("Hash matches - we're in the same bucket ( collision!): " + r1.hashCode());
-
 		} else {
 			System.out.println("NO hash match: " + r1.hashCode() + " / " + r2.hashCode());
-
 		}
 		System.out.println();
 	}
- 
 
 	/** TODO
 	 * 
@@ -146,7 +134,5 @@ public class TestHarness {
 		phonebook.put(p3, p3.getPhonebookEntries());
 		phonebook.put(p4, p4.getPhonebookEntries());
 		phonebook.put(p5, p5.getPhonebookEntries());
-
 	}
-
 }
