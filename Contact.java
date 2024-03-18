@@ -41,24 +41,24 @@ class Contact {
 	}
 	
 	@Override
-    public String toString() {
-        return "Name: " + Cname  + ", Phone Number(s): " + Entries;
-    }
+    	public String toString() {
+        	return "Name: " + Cname  + ", Phone Number(s): " + Entries;
+	    }
 	
-	@Override
-	public int hashCode() {
-	    return Objects.hashCode(Cname.length());
-	}
+   	@Override
+    	public int hashCode() {
+		return Objects.hashCode(Cname.length());
+    	}
 	
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-        	return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-        	return false;
-        }
-        Contact contact = (Contact)obj;
-        return Cname.equals(contact.Cname);
+    	@Override
+    	public boolean equals(Object obj) {
+        	if (this == obj) {
+        		return true;
+        	}
+        	if (obj == null || getClass() != obj.getClass()) {
+        		return false;
+		}
+		Contact contact = (Contact)obj;
+		return Cname.equals(contact.Cname);
     }
 }
